@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
-    public class VendingMachine : IVendingMachine
+    public class SimpleVendingMachine : IVendingMachine
     {
+        private string manufacturer = "Vending machine";
+
         public string Manufacturer
         {
-            get { throw new NotImplementedException(); }
+            get { return this.manufacturer; }
         }
 
         public Money Amount
