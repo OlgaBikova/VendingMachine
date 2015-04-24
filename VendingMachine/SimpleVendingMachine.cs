@@ -11,6 +11,12 @@ namespace VendingMachine
         private string manufacturer = "Vending machine";
         private Money money = new Money();
 
+        private IMoneyValidator moneyValidator;
+
+        public SimpleVendingMachine(IMoneyValidator moneyValidator)
+        {
+            this.moneyValidator = moneyValidator;
+        }
 
         public string Manufacturer
         {
@@ -36,8 +42,18 @@ namespace VendingMachine
 
         public Money InsertCoin(Money amount)
         {
-            
-            throw new NotImplementedException();
+            if (moneyValidator.IsAmountZero(amount))
+            {
+                throw new InvalidAmountException("Cannot insert zero money");   
+            }
+
+            if (moneyValidator.IsAmountNegative(amount))
+            {
+                throw new InvalidAmountException("Cannot insert negative amount of money");  
+            }
+
+
+            return new Money();
         }
 
         public Money ReturnMoney()
