@@ -9,6 +9,8 @@ namespace VendingMachine
     public class SimpleVendingMachine : IVendingMachine
     {
         private string manufacturer = "Vending machine";
+        private Money money = new Money();
+
 
         public string Manufacturer
         {
@@ -34,6 +36,7 @@ namespace VendingMachine
 
         public Money InsertCoin(Money amount)
         {
+            
             throw new NotImplementedException();
         }
 
