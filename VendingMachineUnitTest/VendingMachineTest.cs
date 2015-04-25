@@ -33,9 +33,21 @@ namespace VendingMachineUnitTest
         }
 
         [TestMethod]
-        public void ShoudThrowExceptionWhenInsertingWrongCoins()
-        { 
-        
+        public void ShoudReturnSummedAmountWhenInsertingCoins()
+        {
+            Money fiveCents = new Money();
+            fiveCents.Cents = (int)EnumCent.FiveCent;
+
+            Money twoEuros = new Money();
+            twoEuros.Euros = (int)EnumEuro.TwoEuro;
+
+            Money result1 = vendingMachine.InsertCoin(fiveCents);
+            Money result2 = vendingMachine.InsertCoin(twoEuros);
+
+            Assert.AreEqual((int)EnumCent.FiveCent, result1.Cents);
+            Assert.AreEqual((int)EnumEuro.ZeroEuro, result1.Euros);
+            Assert.AreEqual((int)EnumCent.FiveCent, result2.Cents);
+            Assert.AreEqual((int)EnumEuro.TwoEuro, result2.Euros);
         }
     
     }

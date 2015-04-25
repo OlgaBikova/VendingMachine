@@ -25,7 +25,7 @@ namespace VendingMachine
 
         public Money Amount
         {
-            get { throw new NotImplementedException(); }
+            get { return this.money; }
         }
 
         public Product[] Products
@@ -47,7 +47,10 @@ namespace VendingMachine
                 throw new InvalidAmountException("Invalid amount received", amount);   
             }
 
-            return new Money();
+            this.money.Cents += amount.Cents;
+            this.money.Euros += amount.Euros;
+            
+            return this.money;
         }
 
         public Money ReturnMoney()
