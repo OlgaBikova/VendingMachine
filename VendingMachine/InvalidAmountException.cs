@@ -17,6 +17,11 @@ namespace VendingMachine
         {
         }
 
+        public InvalidAmountException(string message, Money amount)
+            : base(message)
+        {
+        }
+
         public InvalidAmountException(string message, Exception inner)
             : base(message, inner)
         {

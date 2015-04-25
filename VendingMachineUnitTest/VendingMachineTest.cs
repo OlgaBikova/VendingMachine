@@ -24,21 +24,12 @@ namespace VendingMachineUnitTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidAmountException),"Cannot insert zero money")]
-        public void ShouldThrowExceptionWhenInsertingZero()
+        [ExpectedException(typeof(InvalidAmountException), "Invalid amount received")]
+        public void ShouldThrowExceptionWhenInsertingInvalidAmount()
         {
             Money zero = new Money();
-            moneyValidatorMock.Setup(validator => validator.IsAmountZero(zero)).Returns(true);
+            moneyValidatorMock.Setup(validator => validator.IsValid(zero)).Returns(true);
             vendingMachine.InsertCoin(zero);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidAmountException), "Cannot insert negative amount of money")]
-        public void ShouldThrowExceptionWhenInsertingNegative()
-        {
-            Money negativeAmount = new Money();
-            moneyValidatorMock.Setup(validator => validator.IsAmountNegative(negativeAmount)).Returns(true);
-            vendingMachine.InsertCoin(negativeAmount);
         }
 
         [TestMethod]

@@ -8,10 +8,6 @@ namespace VendingMachine
 {
     public interface IMoneyValidator
     {
-        bool IsAmountZero(Money amount);
-
-        bool IsAmountNegative(Money amount);
-
-        bool IsAmountValid(Money amount);
+        bool IsValid(Money amount);
     }
 }

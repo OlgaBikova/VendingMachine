@@ -8,7 +8,12 @@ namespace VendingMachine
 {
     public class MoneyValidator : IMoneyValidator
     {
-        public bool IsAmountZero(Money amount)
+        public bool IsValid(Money amount)
+        {
+            return !IsAmountZero(amount) && !IsAmountNegative(amount) && IsAmountValid(amount);
+        }
+
+        private bool IsAmountZero(Money amount)
         {
             if (amount.Cents == 0 && amount.Euros == 0)
             {
@@ -18,7 +23,7 @@ namespace VendingMachine
             return false;
         }
 
-        public bool IsAmountNegative(Money amount)
+        private bool IsAmountNegative(Money amount)
         {
             if (amount.Cents < 0 || amount.Euros < 0)
             {
@@ -28,7 +33,7 @@ namespace VendingMachine
             return false;
         }
 
-        public bool IsAmountValid(Money amount)
+        private bool IsAmountValid(Money amount)
         {
             bool validEuro = Enum.IsDefined(typeof(EnumEuro), amount.Euros);
             bool validCent = Enum.IsDefined(typeof(EnumCent), amount.Cents);

@@ -11,27 +11,15 @@ namespace VendingMachineUnitTest
         private MoneyValidator moneyValidator = new MoneyValidator();
 
         [TestMethod]
-        public void ShouldReturnTrueWhenAmountIsZero()
+        public void ShouldReturnFalseWhenAmountIsZero()
         {
             Money zeroMoney = new Money();
             
-            bool result = moneyValidator.IsAmountZero(zeroMoney);
+            bool result = moneyValidator.IsValid(zeroMoney);
             
-            Assert.AreEqual(true, result);
-        }
-
-        [TestMethod]
-        public void ShouldReturnFalseWhenAmountIsNotZero()
-        {
-            Money zeroMoney = new Money();
-            zeroMoney.Cents = 1;
-            zeroMoney.Euros = 1;
-
-            bool result = moneyValidator.IsAmountZero(zeroMoney);
-
             Assert.AreEqual(false, result);
         }
-
+                
         [TestMethod]
         public void ShouldReturnTrueWhenAmountIsNegative()
         {
@@ -48,34 +36,9 @@ namespace VendingMachineUnitTest
             negativeMoney3.Cents = -1;
             negativeMoney3.Euros = -1;
 
-            bool result1 = moneyValidator.IsAmountNegative(negativeMoney1);
-            bool result2 = moneyValidator.IsAmountNegative(negativeMoney2);
-            bool result3 = moneyValidator.IsAmountNegative(negativeMoney3);
-
-            Assert.AreEqual(true, result1);
-            Assert.AreEqual(true, result2);
-            Assert.AreEqual(true, result3);
-        }
-
-        [TestMethod]
-        public void ShouldReturnFalseWhenAmountIsNotNegative()
-        {
-            //insert 1 cent
-            Money negativeMoney1 = new Money();
-            negativeMoney1.Cents = 1;
-
-            //insert 1 euro
-            Money negativeMoney2 = new Money();
-            negativeMoney2.Euros = 1;
-
-            //insert 1 euro and 1 cent
-            Money negativeMoney3 = new Money();
-            negativeMoney3.Cents = 1;
-            negativeMoney3.Euros = 1;
-
-            bool result1 = moneyValidator.IsAmountNegative(negativeMoney1);
-            bool result2 = moneyValidator.IsAmountNegative(negativeMoney2);
-            bool result3 = moneyValidator.IsAmountNegative(negativeMoney3);
+            bool result1 = moneyValidator.IsValid(negativeMoney1);
+            bool result2 = moneyValidator.IsValid(negativeMoney2);
+            bool result3 = moneyValidator.IsValid(negativeMoney3);
 
             Assert.AreEqual(false, result1);
             Assert.AreEqual(false, result2);
@@ -91,8 +54,8 @@ namespace VendingMachineUnitTest
             Money invalidMoney2 = new Money();
             invalidMoney2.Euros = 5;
 
-            bool result1 = moneyValidator.IsAmountValid(invalidMoney1);
-            bool result2 = moneyValidator.IsAmountValid(invalidMoney2);
+            bool result1 = moneyValidator.IsValid(invalidMoney1);
+            bool result2 = moneyValidator.IsValid(invalidMoney2);
 
             Assert.AreEqual(false, result1);
             Assert.AreEqual(false, result2);
@@ -118,13 +81,13 @@ namespace VendingMachineUnitTest
             
             Money twoEuros = new Money();
             twoEuros.Euros = (int)EnumEuro.TwoEuro;
-            
-            bool result1 = moneyValidator.IsAmountValid(fiveCents);
-            bool result2 = moneyValidator.IsAmountValid(tenCents);
-            bool result3 = moneyValidator.IsAmountValid(twentyCents);
-            bool result4 = moneyValidator.IsAmountValid(fiftyCents);
-            bool result5 = moneyValidator.IsAmountValid(oneEuro);
-            bool result6 = moneyValidator.IsAmountValid(twoEuros);
+
+            bool result1 = moneyValidator.IsValid(fiveCents);
+            bool result2 = moneyValidator.IsValid(tenCents);
+            bool result3 = moneyValidator.IsValid(twentyCents);
+            bool result4 = moneyValidator.IsValid(fiftyCents);
+            bool result5 = moneyValidator.IsValid(oneEuro);
+            bool result6 = moneyValidator.IsValid(twoEuros);
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);

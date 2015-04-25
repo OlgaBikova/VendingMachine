@@ -42,16 +42,10 @@ namespace VendingMachine
 
         public Money InsertCoin(Money amount)
         {
-            if (moneyValidator.IsAmountZero(amount))
+            if (moneyValidator.IsValid(amount))
             {
-                throw new InvalidAmountException("Cannot insert zero money");   
+                throw new InvalidAmountException("Invalid amount received", amount);   
             }
-
-            if (moneyValidator.IsAmountNegative(amount))
-            {
-                throw new InvalidAmountException("Cannot insert negative amount of money");  
-            }
-
 
             return new Money();
         }
