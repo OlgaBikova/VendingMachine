@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumCent.cs" />
+    <Compile Include="EnumEuro.cs" />
     <Compile Include="IMoneyValidator.cs" />
     <Compile Include="InvalidAmountException.cs" />
     <Compile Include="IVendingMachine.cs" />
