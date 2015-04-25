@@ -37,11 +37,8 @@ namespace VendingMachineUnitTest
         [TestMethod]
         public void ShoudReturnSummedAmountWhenInsertingCoins()
         {
-            Money fiveCents = new Money();
-            fiveCents.Cents = (int)EnumCent.FiveCent;
-
-            Money twoEuros = new Money();
-            twoEuros.Euros = (int)EnumEuro.TwoEuro;
+            Money fiveCents = new Money() { Cents = (int)EnumCent.FiveCent };
+            Money twoEuros = new Money() { Euros = (int)EnumEuro.TwoEuro };
 
             Money result1 = vendingMachine.InsertCoin(fiveCents);
 
@@ -60,9 +57,8 @@ namespace VendingMachineUnitTest
         public void ShouldReturnCurrentMoneyAndSetAmountToZero()
         { 
             //insert coin
-            Money money = new Money();
-            money.Euros = (int)EnumEuro.TwoEuro;
-
+            Money money = new Money() { Euros = (int)EnumEuro.TwoEuro };
+    
             vendingMachine.InsertCoin(money);
 
             //call ReturnMoney

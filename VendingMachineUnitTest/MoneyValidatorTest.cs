@@ -23,18 +23,9 @@ namespace VendingMachineUnitTest
         [TestMethod]
         public void ShouldReturnTrueWhenAmountIsNegative()
         {
-            //insert -1 cent
-            Money negativeMoney1 = new Money();
-            negativeMoney1.Cents = -1;
-
-            //insert -1 euro
-            Money negativeMoney2 = new Money();
-            negativeMoney2.Euros = -1;
-
-            //insert -1 euro and -1 cent
-            Money negativeMoney3 = new Money();
-            negativeMoney3.Cents = -1;
-            negativeMoney3.Euros = -1;
+            Money negativeMoney1 = new Money() { Cents = -1 };
+            Money negativeMoney2 = new Money() { Euros = -1 };
+            Money negativeMoney3 = new Money() { Cents = -1, Euros = -1 };
 
             bool result1 = moneyValidator.IsValid(negativeMoney1);
             bool result2 = moneyValidator.IsValid(negativeMoney2);
@@ -48,12 +39,9 @@ namespace VendingMachineUnitTest
         [TestMethod]
         public void ShouldReturnFalseWhenAmountIsNotValid()
         {
-            Money notValidMoney1 = new Money();
-            notValidMoney1.Cents = 3;
-
-            Money notValidMoney2 = new Money();
-            notValidMoney2.Euros = 5;
-
+            Money notValidMoney1 = new Money() { Cents = 3 };
+            Money notValidMoney2 = new Money() { Euros = 5 };
+            
             bool result1 = moneyValidator.IsValid(notValidMoney1);
             bool result2 = moneyValidator.IsValid(notValidMoney2);
 
@@ -64,24 +52,13 @@ namespace VendingMachineUnitTest
         [TestMethod]
         public void ShouldReturnTrueWhenAmountIsValid()
         {
-            Money fiveCents = new Money();
-            fiveCents.Cents = (int)EnumCent.FiveCent;
-
-            Money tenCents = new Money();
-            tenCents.Cents = (int)EnumCent.TenCent;
-
-            Money twentyCents = new Money();
-            twentyCents.Cents = (int)EnumCent.TwentyCent;
-
-            Money fiftyCents = new Money();
-            fiftyCents.Cents = (int)EnumCent.FiftyCent;
-
-            Money oneEuro = new Money();
-            oneEuro.Euros = (int)EnumEuro.OneEuro;
+            Money fiveCents = new Money() { Cents = (int)EnumCent.FiveCent };
+            Money tenCents = new Money() { Cents = (int)EnumCent.TenCent };
+            Money twentyCents = new Money() { Cents = (int)EnumCent.TwentyCent };
+            Money fiftyCents = new Money() { Cents = (int)EnumCent.FiftyCent };
+            Money oneEuro = new Money() { Euros = (int)EnumEuro.OneEuro };
+            Money twoEuros = new Money() { Euros = (int)EnumEuro.TwoEuro };
             
-            Money twoEuros = new Money();
-            twoEuros.Euros = (int)EnumEuro.TwoEuro;
-
             bool result1 = moneyValidator.IsValid(fiveCents);
             bool result2 = moneyValidator.IsValid(tenCents);
             bool result3 = moneyValidator.IsValid(twentyCents);
