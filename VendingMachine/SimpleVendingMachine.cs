@@ -10,6 +10,7 @@ namespace VendingMachine
     {
         private string manufacturer = "Vending machine";
         private Money money = new Money();
+        private IList<Product> products = new List<Product>();
 
         private IMoneyValidator moneyValidator;
 
@@ -32,11 +33,11 @@ namespace VendingMachine
         {
             get
             {
-                throw new NotImplementedException();
+                return this.products.ToArray();
             }
             set
             {
-                throw new NotImplementedException();
+                this.products = new List<Product>(value);
             }
         }
 

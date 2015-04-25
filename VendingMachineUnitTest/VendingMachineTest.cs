@@ -1,7 +1,9 @@
 ﻿using System;
 using Moq;
+using System.Linq;
 using VendingMachine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace VendingMachineUnitTest
 {
@@ -52,7 +54,6 @@ namespace VendingMachineUnitTest
             Assert.AreEqual((int)EnumCent.FiveCent, result2.Cents);
             Assert.AreEqual((int)EnumEuro.TwoEuro, result2.Euros);
             Assert.AreEqual(result2, vendingMachine.Amount);
-
         }
 
         [TestMethod]
@@ -73,7 +74,36 @@ namespace VendingMachineUnitTest
             //verify amount is zero
             Assert.AreEqual((int)EnumEuro.ZeroEuro, vendingMachine.Amount.Euros);
             Assert.AreEqual((int)EnumCent.ZeroCent, vendingMachine.Amount.Cents);
+        }
 
+        [TestMethod]
+        public void ShouldSetAndReturnProducts()
+        {
+            IList<Product> productList = new List<Product>();
+            Product product1 = new Product()
+            {
+                Available = 1,
+                Name = "Product1",
+                Price = new Money() { Cents = 75 }
+            };
+            
+            Product product2 = new Product()
+            {
+                Available = 2,
+                Name = "Product2",
+                Price = new Money() { Euros = 1, Cents = 25 }
+            };
+
+            productList.Add(product1);
+            productList.Add(product2);
+
+            vendingMachine.Products = productList.ToArray();
+
+            Product[] settedProducts = vendingMachine.Products;
+
+            Assert.AreEqual(2, settedProducts.Count());
+            Assert.IsTrue(settedProducts.Any(product => product.Name == "Product1"));
+            Assert.IsTrue(settedProducts.Any(product => product.Name == "Product2"));
         }
     }
 }
