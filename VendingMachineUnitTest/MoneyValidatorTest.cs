@@ -48,14 +48,14 @@ namespace VendingMachineUnitTest
         [TestMethod]
         public void ShouldReturnFalseWhenAmountIsNotValid()
         {
-            Money invalidMoney1 = new Money();
-            invalidMoney1.Cents = 3;
+            Money notValidMoney1 = new Money();
+            notValidMoney1.Cents = 3;
 
-            Money invalidMoney2 = new Money();
-            invalidMoney2.Euros = 5;
+            Money notValidMoney2 = new Money();
+            notValidMoney2.Euros = 5;
 
-            bool result1 = moneyValidator.IsValid(invalidMoney1);
-            bool result2 = moneyValidator.IsValid(invalidMoney2);
+            bool result1 = moneyValidator.IsValid(notValidMoney1);
+            bool result2 = moneyValidator.IsValid(notValidMoney2);
 
             Assert.AreEqual(false, result1);
             Assert.AreEqual(false, result2);

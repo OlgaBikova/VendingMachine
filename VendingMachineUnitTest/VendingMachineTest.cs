@@ -42,13 +42,38 @@ namespace VendingMachineUnitTest
             twoEuros.Euros = (int)EnumEuro.TwoEuro;
 
             Money result1 = vendingMachine.InsertCoin(fiveCents);
-            Money result2 = vendingMachine.InsertCoin(twoEuros);
 
             Assert.AreEqual((int)EnumCent.FiveCent, result1.Cents);
             Assert.AreEqual((int)EnumEuro.ZeroEuro, result1.Euros);
+            Assert.AreEqual(result1, vendingMachine.Amount);
+
+            Money result2 = vendingMachine.InsertCoin(twoEuros);
+
             Assert.AreEqual((int)EnumCent.FiveCent, result2.Cents);
             Assert.AreEqual((int)EnumEuro.TwoEuro, result2.Euros);
+            Assert.AreEqual(result2, vendingMachine.Amount);
+
         }
-    
+
+        [TestMethod]
+        public void ShouldReturnCurrentMoneyAndSetAmountToZero()
+        { 
+            //insert coin
+            Money money = new Money();
+            money.Euros = (int)EnumEuro.TwoEuro;
+
+            vendingMachine.InsertCoin(money);
+
+            //call ReturnMoney
+            Money returnedAmount = vendingMachine.ReturnMoney();            
+
+            //verify returned money are equal to inserted money
+            Assert.AreEqual(money.Euros, returnedAmount.Euros);
+            Assert.AreEqual(money.Cents, returnedAmount.Cents);
+            //verify amount is zero
+            Assert.AreEqual((int)EnumEuro.ZeroEuro, vendingMachine.Amount.Euros);
+            Assert.AreEqual((int)EnumCent.ZeroCent, vendingMachine.Amount.Cents);
+
+        }
     }
 }

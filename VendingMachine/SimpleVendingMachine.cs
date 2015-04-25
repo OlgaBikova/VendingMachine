@@ -55,7 +55,11 @@ namespace VendingMachine
 
         public Money ReturnMoney()
         {
-            throw new NotImplementedException();
+            Money returnedMoney = this.money;
+            this.money.Euros = (int)EnumEuro.ZeroEuro;
+            this.money.Cents = (int)EnumCent.ZeroCent;
+
+            return returnedMoney;
         }
 
         public Product Buy(int productNumber)
