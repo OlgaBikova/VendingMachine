@@ -69,6 +69,7 @@ namespace VendingMachine
         public Product Buy(int productNumber)
         {
             Product product;
+
             try
             {
                 product = products[productNumber];
@@ -86,6 +87,8 @@ namespace VendingMachine
             {
                 throw new NotEnoughMoneyException("Not enough money for product " + productNumber);
             }
+
+            //Money remainder = 
 
             return product;
         }
