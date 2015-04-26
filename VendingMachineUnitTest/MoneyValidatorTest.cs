@@ -73,5 +73,15 @@ namespace VendingMachineUnitTest
             Assert.AreEqual(true, result5);
             Assert.AreEqual(true, result6);
         }
+
+        [TestMethod]
+        public void ShouldReturnFalseWhenCentIsNotValid()
+        {
+            Money notValidCent = new Money() { Cents = 100 };
+
+            bool result = moneyValidator.IsValid(notValidCent);
+            
+            Assert.AreEqual(false, result);
+        }
     }
 }

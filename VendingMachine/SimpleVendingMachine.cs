@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,12 @@ namespace VendingMachine
         private IList<Product> products = new List<Product>();
 
         private IMoneyValidator moneyValidator;
+        private IComparer moneyComparer;
 
-        public SimpleVendingMachine(IMoneyValidator moneyValidator)
+        public SimpleVendingMachine(IMoneyValidator moneyValidator, IComparer moneyComparer)
         {
             this.moneyValidator = moneyValidator;
+            this.moneyComparer = moneyComparer;
         }
 
         public string Manufacturer

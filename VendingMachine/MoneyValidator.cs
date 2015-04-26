@@ -10,7 +10,10 @@ namespace VendingMachine
     {
         public bool IsValid(Money amount)
         {
-            return !IsAmountZero(amount) && !IsAmountNegative(amount) && IsAmountValid(amount);
+            return  !IsAmountZero(amount) && 
+                    !IsAmountNegative(amount) && 
+                    IsCentsValid(amount) &&
+                    IsAmountValid(amount);
         }
 
         private bool IsAmountZero(Money amount)
@@ -44,6 +47,11 @@ namespace VendingMachine
             }
             
             return false;
+        }
+
+        private bool IsCentsValid(Money amount)
+        {
+            return amount.Cents <= 99;
         }
     }
 }

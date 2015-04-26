@@ -4,6 +4,7 @@ using System.Linq;
 using VendingMachine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace VendingMachineUnitTest
 {
@@ -11,12 +12,13 @@ namespace VendingMachineUnitTest
     public class VendingMachineTest
     {
         Mock<IMoneyValidator> moneyValidatorMock = new Mock<IMoneyValidator>();
+        Mock<IComparer> moneyComparer = new Mock<IComparer>();
         SimpleVendingMachine vendingMachine;
 
         [TestInitialize]
         public void init()
         {
-            vendingMachine = new SimpleVendingMachine(moneyValidatorMock.Object);
+            vendingMachine = new SimpleVendingMachine(moneyValidatorMock.Object, moneyComparer.Object);
         }
 
         [TestMethod]
