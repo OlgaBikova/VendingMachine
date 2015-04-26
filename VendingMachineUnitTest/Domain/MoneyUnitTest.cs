@@ -1,7 +1,5 @@
-﻿using System;
-using Moq;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VendingMachine;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace VendingMachineUnitTest
 {
@@ -18,6 +16,28 @@ namespace VendingMachineUnitTest
 
             Assert.AreEqual(3, amount1.Euros);
             Assert.AreEqual(15, amount1.Cents);
+        }
+
+        [TestMethod]
+        public void ShoudlReturnSummedEuros()
+        {
+            Money amount1 = new Money() { Euros = (int)EnumEuro.OneEuro};
+            Money amount2 = new Money() { Euros = 3};
+
+            amount1.Add(amount2);
+
+            Assert.AreEqual(4, amount1.Euros);
+        }
+
+        [TestMethod]
+        public void ShoudlReturnSummedCents()
+        {
+            Money amount1 = new Money() { Cents = (int)EnumCent.TwentyCent };
+            Money amount2 = new Money() { Cents = 25 };
+
+            amount1.Add(amount2);
+
+            Assert.AreEqual(45, amount1.Cents);
         }
 
         [TestMethod]

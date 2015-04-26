@@ -1,7 +1,5 @@
-﻿using System;
-using Moq;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VendingMachine;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace VendingMachineUnitTest
 {
