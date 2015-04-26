@@ -88,8 +88,12 @@ namespace VendingMachine
                 throw new NotEnoughMoneyException("Not enough money for product " + productNumber);
             }
 
-            //Money remainder = 
+            Amount.Subtract(productPrice);
 
+            //how to proceed remainder????
+
+            this.money = new Money();
+            
             return product;
         }
     }

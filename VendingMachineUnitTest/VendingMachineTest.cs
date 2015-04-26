@@ -129,11 +129,39 @@ namespace VendingMachineUnitTest
             vendingMachine.Products = productList.ToArray();
 
             Money fiveCents = new Money() { Cents = (int)EnumCent.FiveCent };
-            Money result1 = vendingMachine.InsertCoin(fiveCents);
+            vendingMachine.InsertCoin(fiveCents);
 
             moneyComparer.Setup(comparer => comparer.Compare(fiveCents, product1.Price)).Returns(-1);
 
             vendingMachine.Buy(0);
+        }
+
+        [TestMethod]
+        public void ShouldReturnBoughtProduct()
+        {
+            IList<Product> productList = new List<Product>();
+            Product product1 = new Product()
+            {
+                Available = 1,
+                Name = "Product1",
+                Price = new Money() { Cents = 75 }
+            };
+
+            productList.Add(product1);
+
+            vendingMachine.Products = productList.ToArray();
+
+            Money fiveCents = new Money() { Cents = (int)EnumCent.FiveCent };
+            Money OneEuro = new Money() { Euros = (int)EnumEuro.OneEuro };
+
+            vendingMachine.InsertCoin(fiveCents);
+            vendingMachine.InsertCoin(OneEuro);
+
+            Product bougthProduct = vendingMachine.Buy(productList.IndexOf(product1));
+
+            Assert.AreEqual(product1, bougthProduct);
+            Assert.AreEqual(0, vendingMachine.Amount.Euros);
+            Assert.AreEqual(0, vendingMachine.Amount.Cents);
         }
     }
 }
