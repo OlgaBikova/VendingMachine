@@ -108,5 +108,28 @@ namespace VendingMachineUnitTest
         {
             vendingMachine.Buy(2);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotEnoughMoneyException), "Not enough money for product 1")]
+        public void ShoudlThrowExceptionWhenNotEnoughMoney()    
+        {
+            IList<Product> productList = new List<Product>();
+            Product product1 = new Product()
+            {
+                Available = 1,
+                Name = "Product1",
+                Price = new Money() { Cents = 75 }
+            };
+
+            productList.Add(product1);
+
+            //add product to vending machine
+            vendingMachine.Products = productList.ToArray();
+
+            Money fiveCents = new Money() { Cents = (int)EnumCent.FiveCent };
+            Money result1 = vendingMachine.InsertCoin(fiveCents);
+
+            vendingMachine.Buy(0);
+        }
     }
 }

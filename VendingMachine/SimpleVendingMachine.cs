@@ -74,10 +74,13 @@ namespace VendingMachine
             { 
                 throw new ProductDoesNotExistException("Product does not exist for number " + productNumber);
             }
-            
 
+            Money productPrice = product.Price;
 
+        
             return product;
         }
+
+        
     }
 }
