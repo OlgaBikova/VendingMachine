@@ -11,7 +11,7 @@ namespace VendingMachineUnitTest
     public class VendingMachineTest
     {
         Mock<IMoneyValidator> moneyValidatorMock = new Mock<IMoneyValidator>();
-        private SimpleVendingMachine vendingMachine;
+        SimpleVendingMachine vendingMachine;
 
         [TestInitialize]
         public void init()
@@ -100,6 +100,13 @@ namespace VendingMachineUnitTest
             Assert.AreEqual(2, settedProducts.Count());
             Assert.IsTrue(settedProducts.Any(product => product.Name == "Product1"));
             Assert.IsTrue(settedProducts.Any(product => product.Name == "Product2"));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ProductDoesNotExistException), "Product does not exist for number 2")]
+        public void ShouldThrowExceptionWhenProductDoesNotExist()
+        {
+            vendingMachine.Buy(2);
         }
     }
 }

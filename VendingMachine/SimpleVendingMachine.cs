@@ -65,7 +65,19 @@ namespace VendingMachine
 
         public Product Buy(int productNumber)
         {
-            throw new NotImplementedException();
+            Product product;
+            try
+            {
+                product = products[productNumber];
+            }
+            catch (ArgumentOutOfRangeException ex)
+            { 
+                throw new ProductDoesNotExistException("Product does not exist for number " + productNumber);
+            }
+            
+
+
+            return product;
         }
     }
 }
