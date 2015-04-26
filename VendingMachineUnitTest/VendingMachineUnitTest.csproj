@@ -53,9 +53,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="MoneyComparerUnitTest.cs" />
-    <Compile Include="MoneyUnitTest.cs" />
-    <Compile Include="MoneyValidatorTest.cs" />
+    <Compile Include="Helpers\MoneyComparerUnitTest.cs" />
+    <Compile Include="Domain\MoneyUnitTest.cs" />
+    <Compile Include="Helpers\MoneyValidatorTest.cs" />
     <Compile Include="VendingMachineTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

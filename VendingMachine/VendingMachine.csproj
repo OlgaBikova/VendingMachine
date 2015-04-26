@@ -41,18 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnumCent.cs" />
-    <Compile Include="EnumEuro.cs" />
-    <Compile Include="IMoneyComparer.cs" />
-    <Compile Include="IMoneyValidator.cs" />
-    <Compile Include="InvalidAmountException.cs" />
-    <Compile Include="MoneyComparer.cs" />
-    <Compile Include="NotEnoughMoneyException.cs" />
-    <Compile Include="ProductDoesNotExistException.cs" />
+    <Compile Include="Domain\EnumCent.cs" />
+    <Compile Include="Domain\EnumEuro.cs" />
+    <Compile Include="Helpers\IMoneyComparer.cs" />
+    <Compile Include="Helpers\IMoneyValidator.cs" />
+    <Compile Include="Exceptions\InvalidAmountException.cs" />
+    <Compile Include="Helpers\MoneyComparer.cs" />
+    <Compile Include="Exceptions\NotEnoughMoneyException.cs" />
+    <Compile Include="Exceptions\ProductDoesNotExistException.cs" />
     <Compile Include="IVendingMachine.cs" />
-    <Compile Include="Money.cs" />
-    <Compile Include="MoneyValidator.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="Domain\Money.cs" />
+    <Compile Include="Helpers\MoneyValidator.cs" />
+    <Compile Include="Domain\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleVendingMachine.cs" />
