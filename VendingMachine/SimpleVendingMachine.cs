@@ -14,9 +14,9 @@ namespace VendingMachine
         private IList<Product> products = new List<Product>();
 
         private IMoneyValidator moneyValidator;
-        private IComparer moneyComparer;
+        private IMoneyComparer moneyComparer;
 
-        public SimpleVendingMachine(IMoneyValidator moneyValidator, IComparer moneyComparer)
+        public SimpleVendingMachine(IMoneyValidator moneyValidator, IMoneyComparer moneyComparer)
         {
             this.moneyValidator = moneyValidator;
             this.moneyComparer = moneyComparer;
@@ -80,10 +80,14 @@ namespace VendingMachine
 
             Money productPrice = product.Price;
 
-        
+            int moneyCompareResult = moneyComparer.Compare(Amount, productPrice);
+
+            if (moneyCompareResult < 0)
+            {
+                throw new NotEnoughMoneyException("Not enough money for product " + productNumber);
+            }
+
             return product;
         }
-
-        
     }
 }

@@ -12,7 +12,7 @@ namespace VendingMachineUnitTest
     public class VendingMachineTest
     {
         Mock<IMoneyValidator> moneyValidatorMock = new Mock<IMoneyValidator>();
-        Mock<IComparer> moneyComparer = new Mock<IComparer>();
+        Mock<IMoneyComparer> moneyComparer = new Mock<IMoneyComparer>();
         SimpleVendingMachine vendingMachine;
 
         [TestInitialize]
@@ -130,6 +130,8 @@ namespace VendingMachineUnitTest
 
             Money fiveCents = new Money() { Cents = (int)EnumCent.FiveCent };
             Money result1 = vendingMachine.InsertCoin(fiveCents);
+
+            moneyComparer.Setup(comparer => comparer.Compare(fiveCents, product1.Price)).Returns(-1);
 
             vendingMachine.Buy(0);
         }

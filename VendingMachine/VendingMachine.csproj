@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="EnumCent.cs" />
     <Compile Include="EnumEuro.cs" />
+    <Compile Include="IMoneyComparer.cs" />
     <Compile Include="IMoneyValidator.cs" />
     <Compile Include="InvalidAmountException.cs" />
     <Compile Include="MoneyComparer.cs" />
