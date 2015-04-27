@@ -158,11 +158,15 @@ namespace VendingMachineUnitTest
             vendingMachine.InsertCoin(fiveCents);
             vendingMachine.InsertCoin(OneEuro);
 
+            Money remainder = new Money() { Cents = 30 };
+
+            moneyCalculation.Setup(calculation => calculation.Subtract(product1.Price, vendingMachine.Amount)).Returns(remainder);
+
             Product bougthProduct = vendingMachine.Buy(productList.IndexOf(product1));
 
             Assert.AreEqual(product1, bougthProduct);
             Assert.AreEqual(0, vendingMachine.Amount.Euros);
-            Assert.AreEqual(0, vendingMachine.Amount.Cents);
+            Assert.AreEqual(30, vendingMachine.Amount.Cents);
         }
     }
 }

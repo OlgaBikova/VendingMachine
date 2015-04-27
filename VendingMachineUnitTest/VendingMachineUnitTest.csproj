@@ -53,8 +53,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Helpers\MoneyComparerUnitTest.cs" />
-    <Compile Include="Domain\MoneyUnitTest.cs" />
+    <Compile Include="Helpers\MoneyComparerTest.cs" />
+    <Compile Include="Helpers\MoneyCalculationTest.cs" />
     <Compile Include="Helpers\MoneyValidatorTest.cs" />
     <Compile Include="VendingMachineTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

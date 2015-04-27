@@ -5,7 +5,7 @@ using VendingMachine.Helpers;
 namespace VendingMachineUnitTest
 {
     [TestClass]
-    public class MoneyComparerUnitTest
+    public class MoneyComparerTest
     {
         MoneyComparer moneyComparer = new MoneyComparer();
 

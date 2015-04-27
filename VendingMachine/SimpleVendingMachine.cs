@@ -88,14 +88,10 @@ namespace VendingMachine
                 throw new NotEnoughMoneyException("Not enough money for product " + productNumber);
             }
 
-            moneyCalculation.Subtract(productPrice, Amount);
-
-            //To return the remainder the method "ReturnMoney" should be used, 
-            //otherwise user can continue the shopping with remaining money in machine.
-
-
-            this.money = new Money();
+            Money remainder = moneyCalculation.Subtract(productPrice, Amount);
             
+            this.money = remainder;
+
             return product;
         }
     }

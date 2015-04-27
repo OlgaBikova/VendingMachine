@@ -9,7 +9,7 @@ using VendingMachine.Helpers;
 namespace VendingMachineUnitTest
 {
     [TestClass]
-    public class MoneyUnitTest
+    public class MoneyCalculationTest
     {
         private MoneyCalculation moneyCalculation = new MoneyCalculation();
 
@@ -19,10 +19,10 @@ namespace VendingMachineUnitTest
             Money amount1 = new Money() { Euros = (int)EnumEuro.OneEuro, Cents = (int)EnumCent.TwentyCent };
             Money amount2 = new Money() { Euros = (int)EnumEuro.OneEuro, Cents = 95 };
 
-            amount1 = moneyCalculation.Add(amount2, amount1);
+            Money result = moneyCalculation.Add(amount2, amount1);
 
-            Assert.AreEqual(3, amount1.Euros);
-            Assert.AreEqual(15, amount1.Cents);
+            Assert.AreEqual(3, result.Euros);
+            Assert.AreEqual(15, result.Cents);
         }
 
         [TestMethod]
@@ -31,9 +31,9 @@ namespace VendingMachineUnitTest
             Money amount1 = new Money() { Euros = (int)EnumEuro.OneEuro};
             Money amount2 = new Money() { Euros = 3};
 
-            amount1 = moneyCalculation.Add(amount2, amount1);
+            Money result = moneyCalculation.Add(amount2, amount1);
 
-            Assert.AreEqual(4, amount1.Euros);
+            Assert.AreEqual(4, result.Euros);
         }
 
         [TestMethod]
@@ -42,9 +42,9 @@ namespace VendingMachineUnitTest
             Money amount1 = new Money() { Cents = (int)EnumCent.TwentyCent };
             Money amount2 = new Money() { Cents = 25 };
 
-            amount1 = moneyCalculation.Add(amount2, amount1);
+            Money result = moneyCalculation.Add(amount2, amount1);
 
-            Assert.AreEqual(45, amount1.Cents);
+            Assert.AreEqual(45, result.Cents);
         }
 
         [TestMethod]
@@ -53,10 +53,10 @@ namespace VendingMachineUnitTest
             Money amount1 = new Money() { Euros = (int)EnumEuro.OneEuro, Cents = (int)EnumCent.TwentyCent };
             Money amount2 = new Money() { Euros = (int)EnumEuro.OneEuro, Cents = 95 };
 
-            amount1 = moneyCalculation.Subtract(amount2, amount1);
+            Money result = moneyCalculation.Subtract(amount2, amount1);
 
-            Assert.AreEqual(0, amount1.Euros);
-            Assert.AreEqual(-75, amount1.Cents);
+            Assert.AreEqual(0, result.Euros);
+            Assert.AreEqual(-75, result.Cents);
         }
 
         [TestMethod]
@@ -65,10 +65,10 @@ namespace VendingMachineUnitTest
             Money amount1 = new Money() { Euros = (int)EnumEuro.OneEuro, Cents = 25 };
             Money amount2 = new Money() { Euros = (int)EnumEuro.ZeroEuro, Cents = (int)EnumCent.FiftyCent };
 
-            amount1 = moneyCalculation.Subtract(amount2, amount1);
+            Money result = moneyCalculation.Subtract(amount2, amount1);
 
-            Assert.AreEqual(0, amount1.Euros);
-            Assert.AreEqual(75, amount1.Cents);
+            Assert.AreEqual(0, result.Euros);
+            Assert.AreEqual(75, result.Cents);
         }
     }
 }
