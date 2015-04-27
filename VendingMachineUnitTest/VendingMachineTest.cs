@@ -59,12 +59,9 @@ namespace VendingMachineUnitTest
         [TestMethod]
         public void ShouldReturnCurrentMoneyAndSetAmountToZero()
         { 
-            //insert coin
             Money money = new Money() { Euros = (int)EnumEuro.TwoEuro };
-    
             vendingMachine.InsertCoin(money);
 
-            //call ReturnMoney
             Money returnedAmount = vendingMachine.ReturnMoney();            
 
             //verify returned money are equal to inserted money
@@ -79,6 +76,7 @@ namespace VendingMachineUnitTest
         public void ShouldSetAndReturnProducts()
         {
             IList<Product> productList = new List<Product>();
+            
             Product product1 = new Product()
             {
                 Available = 1,
@@ -126,7 +124,6 @@ namespace VendingMachineUnitTest
 
             productList.Add(product1);
 
-            //add product to vending machine
             vendingMachine.Products = productList.ToArray();
 
             Money fiveCents = new Money() { Cents = (int)EnumCent.FiveCent };
@@ -134,6 +131,7 @@ namespace VendingMachineUnitTest
 
             moneyComparer.Setup(comparer => comparer.Compare(fiveCents, product1.Price)).Returns(-1);
 
+            //buy first product
             vendingMachine.Buy(0);
         }
 
@@ -159,7 +157,6 @@ namespace VendingMachineUnitTest
             vendingMachine.InsertCoin(OneEuro);
 
             Money remainder = new Money() { Cents = 30 };
-
             moneyCalculation.Setup(calculation => calculation.Subtract(product1.Price, vendingMachine.Amount)).Returns(remainder);
 
             Product bougthProduct = vendingMachine.Buy(productList.IndexOf(product1));
