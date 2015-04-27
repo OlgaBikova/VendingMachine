@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VendingMachine
+namespace VendingMachine.Helpers
 {
     public interface IMoneyValidator
     {

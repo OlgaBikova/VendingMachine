@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using VendingMachine;
+using VendingMachine.Helpers;
 
 namespace VendingMachineUnitTest
 {
@@ -12,12 +13,13 @@ namespace VendingMachineUnitTest
     {
         Mock<IMoneyValidator> moneyValidatorMock = new Mock<IMoneyValidator>();
         Mock<IMoneyComparer> moneyComparer = new Mock<IMoneyComparer>();
+        Mock<IMoneyCalculation> moneyCalculation = new Mock<IMoneyCalculation>();
         SimpleVendingMachine vendingMachine;
 
         [TestInitialize]
         public void init()
         {
-            vendingMachine = new SimpleVendingMachine(moneyValidatorMock.Object, moneyComparer.Object);
+            vendingMachine = new SimpleVendingMachine(moneyValidatorMock.Object, moneyComparer.Object, moneyCalculation.Object);
         }
 
         [TestMethod]

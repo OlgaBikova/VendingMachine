@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace VendingMachine
+namespace VendingMachine.Helpers
 {
     public interface IMoneyComparer : IComparer<Money>
     {

@@ -43,9 +43,11 @@
   <ItemGroup>
     <Compile Include="Domain\EnumCent.cs" />
     <Compile Include="Domain\EnumEuro.cs" />
+    <Compile Include="Helpers\IMoneyCalculation.cs" />
     <Compile Include="Helpers\IMoneyComparer.cs" />
     <Compile Include="Helpers\IMoneyValidator.cs" />
     <Compile Include="Exceptions\InvalidAmountException.cs" />
+    <Compile Include="Helpers\MoneyCalculation.cs" />
     <Compile Include="Helpers\MoneyComparer.cs" />
     <Compile Include="Exceptions\NotEnoughMoneyException.cs" />
     <Compile Include="Exceptions\ProductDoesNotExistException.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using VendingMachine.Helpers;
 
 namespace VendingMachine
 {
@@ -12,11 +13,13 @@ namespace VendingMachine
 
         private IMoneyValidator moneyValidator;
         private IMoneyComparer moneyComparer;
+        private IMoneyCalculation moneyCalculation;
 
-        public SimpleVendingMachine(IMoneyValidator moneyValidator, IMoneyComparer moneyComparer)
+        public SimpleVendingMachine(IMoneyValidator moneyValidator, IMoneyComparer moneyComparer, IMoneyCalculation moneyCalculation)
         {
             this.moneyValidator = moneyValidator;
             this.moneyComparer = moneyComparer;
+            this.moneyCalculation = moneyCalculation;
         }
 
         public string Manufacturer
@@ -85,9 +88,11 @@ namespace VendingMachine
                 throw new NotEnoughMoneyException("Not enough money for product " + productNumber);
             }
 
-            Amount.Subtract(productPrice);
+            moneyCalculation.Subtract(productPrice, Amount);
 
-            //how to proceed remainder????
+            //To return the remainder the method "ReturnMoney" should be used, 
+            //otherwise user can continue the shopping with remaining money in machine.
+
 
             this.money = new Money();
             
