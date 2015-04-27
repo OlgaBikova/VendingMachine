@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 
 namespace VendingMachine
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2237:MarkISerializableTypesWithSerializable")]
+    [Serializable]
     public class InvalidAmountException : Exception
     {
         public InvalidAmountException()

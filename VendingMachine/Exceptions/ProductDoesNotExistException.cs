@@ -2,7 +2,7 @@
 
 namespace VendingMachine
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2237:MarkISerializableTypesWithSerializable")]
+    [Serializable]
     public class ProductDoesNotExistException : Exception
     {
         public ProductDoesNotExistException()

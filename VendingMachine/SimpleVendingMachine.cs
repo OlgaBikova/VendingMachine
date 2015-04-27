@@ -71,7 +71,7 @@ namespace VendingMachine
             {
                 product = products[productNumber];
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             { 
                 throw new ProductDoesNotExistException("Product does not exist for number " + productNumber);
             }
