@@ -10,33 +10,35 @@ namespace VendingMachine.Helpers
     {
         public Money Add(Money amount, Money currentMoney)
         {
-            int amountCents = this.ConvertToCent(amount);
-            int currentCents = this.ConvertToCent(currentMoney);
+            int amountCents = this.ConvertMoneyToCent(amount);
+            int currentCents = this.ConvertMoneyToCent(currentMoney);
 
             int sumCents = currentCents + amountCents;
-
-            currentMoney.Euros = sumCents / 100;
-            currentMoney.Cents = sumCents % 100;
-
-            return currentMoney;
+            
+            return ConvertCentsToMoney(currentMoney, sumCents);
         }
 
         public Money Subtract(Money amount, Money currentMoney)
         {
-            int amountCents = this.ConvertToCent(amount);
-            int currentCents = this.ConvertToCent(currentMoney);
+            int amountCents = this.ConvertMoneyToCent(amount);
+            int currentCents = this.ConvertMoneyToCent(currentMoney);
 
             int sumCents = currentCents - amountCents;
+            
+            return ConvertCentsToMoney(currentMoney, sumCents);
+        }
 
+        private int ConvertMoneyToCent(Money amount)
+        {
+            return amount.Euros * 100 + amount.Cents;
+        }
+
+        private Money ConvertCentsToMoney(Money currentMoney, int sumCents)
+        {
             currentMoney.Euros = sumCents / 100;
             currentMoney.Cents = sumCents % 100;
 
             return currentMoney;
-        }
-
-        private int ConvertToCent(Money amount)
-        {
-            return amount.Euros * 100 + amount.Cents;
         }
     }
 }
