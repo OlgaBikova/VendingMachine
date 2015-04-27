@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
-namespace VendingMachine
+namespace VendingMachine.Exceptions
 {
     [Serializable]
     public class InvalidAmountException : Exception

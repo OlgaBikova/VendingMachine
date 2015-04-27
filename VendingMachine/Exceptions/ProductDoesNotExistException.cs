@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VendingMachine
+namespace VendingMachine.Exceptions
 {
     [Serializable]
     public class ProductDoesNotExistException : Exception

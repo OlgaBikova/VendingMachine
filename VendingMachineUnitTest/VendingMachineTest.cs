@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using VendingMachine;
+using VendingMachine.Exceptions;
 using VendingMachine.Helpers;
 
 namespace VendingMachineUnitTest
@@ -162,6 +163,7 @@ namespace VendingMachineUnitTest
             Product bougthProduct = vendingMachine.Buy(productList.IndexOf(product1));
 
             Assert.AreEqual(product1, bougthProduct);
+            //verify reminder
             Assert.AreEqual(0, vendingMachine.Amount.Euros);
             Assert.AreEqual(30, vendingMachine.Amount.Cents);
         }

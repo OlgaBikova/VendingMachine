@@ -55,6 +55,7 @@
     <Compile Include="Domain\Money.cs" />
     <Compile Include="Helpers\MoneyValidator.cs" />
     <Compile Include="Domain\Product.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleVendingMachine.cs" />
   </ItemGroup>
